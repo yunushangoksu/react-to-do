@@ -1,35 +1,23 @@
 import React from "react";
 
-function List() {
+function List(getTasks) {
   return (
     <div>
-      {/* <section className="todoapp"> */}
       <section className="main">
         <ul className="todo-list">
-          <li className="completed">
-            <div className="view">
-              <input className="toggle" type="checkbox" />
-              <label>Learn JavaScript</label>
-              <button className="destroy"></button>
-            </div>
-          </li>
-          <li>
-            <div className="view">
-              <input className="toggle" type="checkbox" />
-              <label>Learn React</label>
-              <button className="destroy"></button>
-            </div>
-          </li>
-          <li>
-            <div className="view">
-              <input className="toggle" type="checkbox" />
-              <label>Have a life!</label>
-              <button className="destroy"></button>
-            </div>
-          </li>
+          {getTasks.getTasks.map((tasks, i, state) => {
+            return (
+              <li key={i} className={state}>
+                <div className="view">
+                  <input className="toggle" type="checkbox" />
+                  <label>{tasks.task}</label>
+                  <button className="destroy"></button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </section>
-      {/* </section> */}
     </div>
   );
 }

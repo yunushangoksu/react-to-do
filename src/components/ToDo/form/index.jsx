@@ -1,25 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Form() {
+function Form({ addTask, getTasks }) {
+  const initialValue = { task: "", state: false };
+  const [todos, setTodos] = useState({ task: "", state: false });
+
+  const onChangeInput = (event) => {
+    setTodos({ ...todos, [event.target.name]: event.target.value });
+    console.log(todos);
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    addTask([...getTasks, todos]);
+    setTodos(initialValue);
+  };
+
   return (
     <div>
-      {/* <section className="todoapp"> */}
       <header className="header">
         <h1>todos</h1>
-        <form action="">
+        <form onSubmit={onSubmit}>
           <input
             className="new-todo"
+            name="task"
+            value={todos.task}
             placeholder="What needs to be done?"
             autoFocus
+            onChange={onChangeInput}
           />
         </form>
       </header>
 
       <section className="main">
-        <input className="toggle-all" type="checkbox" />
+        <input
+          className="toggle-all"
+          name="state"
+          type="checkbox"
+          onChange={onChangeInput}
+        />
         <label htmlFor="toggle-all">Mark all as complete</label>
       </section>
-      {/* </section> */}
     </div>
   );
 }
