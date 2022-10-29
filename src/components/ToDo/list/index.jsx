@@ -1,17 +1,21 @@
 import React from "react";
 
-function List(getTasks) {
+function List({ getTasks, addTask }) {
+  const deleteHandle = () => {
+    addTask(getTasks.filter((item) => item.id !== getTasks.task.id));
+  };
+
   return (
     <div>
       <section className="main">
         <ul className="todo-list">
-          {getTasks.getTasks.map((tasks, i, state) => {
+          {getTasks.map((tasks, id, checked) => {
             return (
-              <li key={i} className={state}>
+              <li key={id} className={checked}>
                 <div className="view">
                   <input className="toggle" type="checkbox" />
                   <label>{tasks.task}</label>
-                  <button className="destroy"></button>
+                  <button className="destroy" onClick={deleteHandle}></button>
                 </div>
               </li>
             );

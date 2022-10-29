@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
 function Form({ addTask, getTasks }) {
-  const initialValue = { task: "", state: false };
-  const [todos, setTodos] = useState({ task: "", state: false });
+  const initialValue = { task: "", checked: false };
+  const [todos, setTodos] = useState(initialValue);
 
   const onChangeInput = (event) => {
     setTodos({ ...todos, [event.target.name]: event.target.value });
-    console.log(todos);
   };
 
   const onSubmit = (event) => {

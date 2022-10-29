@@ -16,7 +16,7 @@ function ToDo() {
     <div>
       <section className="todoapp">
         <Form addTask={setTasks} getTasks={tasks} />
-        <List getTasks={tasks} />
+        <List addTask={setTasks} getTasks={tasks} />
         <Filter />
       </section>
       <Footer />
