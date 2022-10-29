@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Form({ addTask, getTasks }) {
-  const initialValue = { task: "", checked: false };
+  const initialValue = { id: "", task: "", checked: false };
   const [todos, setTodos] = useState(initialValue);
 
   const onChangeInput = (event) => {

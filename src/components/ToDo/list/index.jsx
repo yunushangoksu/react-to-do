@@ -1,8 +1,8 @@
 import React from "react";
 
 function List({ getTasks, addTask }) {
-  const deleteHandle = (id) => {
-    const newList = getTasks.filter((l) => l.id !== id);
+  const deleteHandle = (idd) => {
+    const newList = getTasks.filter((l) => l.id !== idd);
     addTask(newList);
   };
 
@@ -10,7 +10,7 @@ function List({ getTasks, addTask }) {
     <div>
       <section className="main">
         <ul className="todo-list">
-          {getTasks.map((tasks, id, checked) => {
+          {getTasks.map((id, tasks, checked) => {
             return (
               <li
                 key={id}
