@@ -6,7 +6,21 @@ import Form from "./form";
 import List from "./list";
 
 function ToDo() {
-  const [tasks, setTasks] = useState([]);
+  const initialValue = [
+    {
+      task: "React Öğren",
+      checked: false,
+    },
+    {
+      task: "Askere Git",
+      checked: false,
+    },
+    {
+      task: "Yemek Ye",
+      checked: false,
+    },
+  ];
+  const [tasks, setTasks] = useState(initialValue);
 
   useEffect(() => {
     console.log(tasks);

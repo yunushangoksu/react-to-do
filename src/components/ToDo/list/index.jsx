@@ -1,8 +1,9 @@
 import React from "react";
 
 function List({ getTasks, addTask }) {
-  const deleteHandle = () => {
-    addTask(getTasks.filter((item) => item.id !== getTasks.task.id));
+  const deleteHandle = (id) => {
+    const newList = getTasks.filter((l) => l.id !== id);
+    addTask(newList);
   };
 
   return (
@@ -11,11 +12,17 @@ function List({ getTasks, addTask }) {
         <ul className="todo-list">
           {getTasks.map((tasks, id, checked) => {
             return (
-              <li key={id} className={checked}>
+              <li
+                key={id}
+                className={checked[id].checked ? "checked" : "notchecked"}
+              >
                 <div className="view">
                   <input className="toggle" type="checkbox" />
                   <label>{tasks.task}</label>
-                  <button className="destroy" onClick={deleteHandle}></button>
+                  <button
+                    className="destroy"
+                    onClick={() => deleteHandle(id)}
+                  ></button>
                 </div>
               </li>
             );
