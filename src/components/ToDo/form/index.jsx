@@ -10,7 +10,19 @@ function Form({ addTask, getTasks }) {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    addTask([...getTasks, todos]);
+
+    if (event.target.value === "") {
+      return;
+    }
+    console.log(todos);
+    addTask([
+      ...getTasks,
+      {
+        id: getTasks.length > 0 ? getTasks[getTasks.length - 1].id + 1 : 0,
+        task: todos.task,
+        checked: false,
+      },
+    ]);
     setTodos(initialValue);
   };
 

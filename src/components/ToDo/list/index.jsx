@@ -10,12 +10,9 @@ function List({ getTasks, addTask }) {
     <div>
       <section className="main">
         <ul className="todo-list">
-          {getTasks.map((id, tasks, checked) => {
+          {getTasks.map((tasks, id, checked) => {
             return (
-              <li
-                key={id}
-                className={checked[id].checked ? "checked" : "notchecked"}
-              >
+              <li key={id} className={checked[id] ? "checked" : "notchecked"}>
                 <div className="view">
                   <input className="toggle" type="checkbox" />
                   <label>{tasks.task}</label>
